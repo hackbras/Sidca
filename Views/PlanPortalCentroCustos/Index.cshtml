@@ -1,0 +1,95 @@
+﻿@model IEnumerable<SidcaMrv2.Models.PlanPortalCentroCusto>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nu_Grupo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.No_Grupo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CasoUsoGrupo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nu_Assunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.No_Assunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CasoUsoAssunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CCGeral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CCEspecial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidSubsídio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nu_Grupo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_Grupo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CasoUsoGrupo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nu_Assunto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_Assunto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CasoUsoAssunto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCGeral)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCEspecial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnidSubsídio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.cod }) |
+                @Html.ActionLink("Details", "Details", new { id=item.cod }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.cod })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

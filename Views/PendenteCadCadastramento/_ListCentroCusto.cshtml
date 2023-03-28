@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SidcaMrv2.Models.PlanPortalCentroCusto>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">CasoUsoGrupo</th>
+            <th scope="col">CCGeral</th>
+            <th scope="col">No_Assunto</th>
+            <th scope="col">CasoUsoAssunto</th>
+            <th scope="col">CCEspecial</th>
+            <th scope="col">UnidSubsídio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var i = 0;
+            foreach (var cg in Model)
+            {
+                i++;
+                <tr>
+                    <td scope="row">@i</td>
+                    <td>@cg.CasoUsoGrupo</td>
+                    <td>@cg.CasoUsoGrupo</td>
+                    <td>@cg.CCGeral</td>
+                    <td>@cg.No_Assunto</td>
+                    <td>@cg.CasoUsoAssunto</td>
+                    <td>@cg.CCEspecial</td>
+                    <td>@cg.UnidSubsídio</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

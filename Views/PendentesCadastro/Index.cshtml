@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SidcaMrv2.Models.PreCadastroUniverso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastro</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Expediente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Processo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoParteJudicial)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var PendCadId = item.Expediente.Replace(".", "").Replace("/", "").Replace("-", "");
+        
+            <tr >
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.Expediente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Processo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtEntrada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoParteJudicial)
+                </td>
+                <td>
+                    <a href="/PendenteCadCadastramento/Edit/@item.Expediente.Replace(".", "").Replace("/", "") ">Cadastramento</a>
+                    @*@Html.ActionLink("Edit", "Edit", "PendenteCadCadastramento", new { id = item.Expediente.Replace(".", "").Replace("/", "") })*@
+
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Expediente }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Expediente })*@
+                </td>
+            </tr>
+    }
+
+</table>

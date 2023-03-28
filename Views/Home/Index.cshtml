@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+    <h1>Arquivos para exportar</h1>
+    <br />
+    <ul>
+        @foreach (string file in ViewBag.FileList)
+        {
+            //char[] key = "//".ToCharArray();
+            //string fileName = file.Substring(file.LastIndexOfAny(key));
+            <li>@file</li>
+        }
+    </ul>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SidcaMrv2.Models.CadParteJudicial>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Expediente)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NoParteJudicial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CpfCnpj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CondicaoParte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Matricula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expediente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoParteJudicial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CpfCnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CondicaoParte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Matricula)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

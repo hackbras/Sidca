@@ -1,0 +1,166 @@
+﻿@model IEnumerable<SidcaMrv2.Models.PreCadastroUniverso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Processo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoParteJudicial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CondicaoParte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NuAdvogado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaJud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrupoAssunto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VlrCausa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtCausa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NuVara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NuForo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comarca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CentroCusto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnidSubsidio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TpAcao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdTerceirizacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdRelevante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpVinculado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtAcervoInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcervoInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtFinalizado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Finalizado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expediente_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Processo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoParteJudicial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CondicaoParte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DtEntrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NuAdvogado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaJud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrupoAssunto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VlrCausa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DtCausa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NuVara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NuForo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comarca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CentroCusto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnidSubsidio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TpAcao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdTerceirizacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdRelevante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpVinculado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DtAcervoInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AcervoInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DtFinalizado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Finalizado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expediente_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Expediente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Expediente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Expediente })
+        </td>
+    </tr>
+}
+
+</table>

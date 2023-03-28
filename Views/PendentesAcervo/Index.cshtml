@@ -1,0 +1,225 @@
+﻿@model IEnumerable<SidcaMrv2.Models.PreCadastroUniverso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Acervo</h2>
+<br />
+<br />
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Expediente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Processo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoParteJudicial)
+        </th>
+        <th>
+            Expediente Vinculado
+            @*@Html.DisplayNameFor(model => model.ExpVinculado)*@
+        </th>
+        <th>
+            Processo Relevante
+        </th>
+        <th>
+            Apto a Terceirização
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NuAdvogado)
+        </th>
+        <th>
+            Concluído
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtAcervoInfo)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CondicaoParte)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AreaJud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrupoAssunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VlrCausa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtCausa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NuVara)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NuForo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comarca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentroCusto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidSubsidio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TpAcao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRelevante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcervoInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtFinalizado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finalizado)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var AptoTerc = "AptoTerc" + item.Expediente.Replace(".", "").Replace("/", "").Replace("-", "");
+        var AceConcl = "AceConcl" + item.Expediente.Replace(".", "").Replace("/", "").Replace("-", "");
+        var DdlAdv = "DdlAdv" + item.Expediente.Replace(".", "").Replace("/", "").Replace("-", "");
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expediente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Processo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoParteJudicial)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ExpVinculado)*@
+                @*<input type="checkbox" name="ExpedienteVinculado" value="" />*@
+                @Html.ActionLink("inserir", "Edit_processo_vinculado", new { id = item.Expediente.Replace(".", "").Replace("/", "") })
+            </td>
+            <td>
+                @*<input type="checkbox" name="ProcessoRelevante" value="" />*@
+                @*@Html.ActionLink("Inserir", "Edit_processo_relevante", new { id = item.Expediente.Replace(".", "").Replace("/", "") })*@
+                @Html.ActionLink("Create", "Create", new { id = item.Expediente.Replace(".", "").Replace("/", "") })
+            </td>
+            <td>
+                @if (item.IdTerceirizacao == "true")
+                {<input type="checkbox" name="AptoTerceirizacao" checked id="@AptoTerc" onclick="pendente.AptoTerc('@item.Expediente')" />}
+                else
+                {<input type="checkbox" name="AptoTerceirizacao" id="@AptoTerc" onclick="pendente.AptoTerc('@item.Expediente')" />}
+            </td>
+
+            <td>
+                @*@Html.DisplayFor(modelItem => item.NuAdvogado)*@
+                @*@Html.DropDownListFor(modelItem => item.NuAdvogado,ViewBag.ListaAdvogados, "Selecione um advogado", new { @class = "form-control" })*@
+                <select class="form-group" id="@DdlAdv" onchange="pendente.DdlAdv('@item.Expediente')">
+                    <option value="" selected>Selecione um advogado</option>
+                    @foreach (var advogado in ViewBag.ListaAdvogados)
+                    {
+                        if (item.NuAdvogado == @advogado)
+                        {
+                            <option value="@advogado" selected>@advogado</option>
+                        }
+                        else
+                        {
+                            <option value="@advogado">@advogado</option>
+                        }
+
+
+                    }
+                </select>
+            </td>
+            <td>
+                @*@Html.CheckBox("concluido", false)*@
+                @if (item.AcervoInfo == "true")
+                {<input type="checkbox" name="acervoConcluido" class="checkbox" checked id="@AceConcl" onclick="pendente.AceConcl('@item.Expediente')" />}
+                else
+                {<input type="checkbox" name="acervoConcluido" class="checkbox" id="@AceConcl" onclick="pendente.AceConcl('@item.Expediente')" />}
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtAcervoInfo)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CondicaoParte)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.AreaJud)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrupoAssunto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VlrCausa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtCausa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuVara)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuForo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CentroCusto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnidSubsidio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TpAcao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdRelevante)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AcervoInfo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtFinalizado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Finalizado)
+                </td>*@
+            @*<td>
+                   @Html.ActionLink("Details", "Details", new { id = item.Expediente }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Expediente })
+                </td>*@
+        </tr>
+    }
+
+</table>
+
+
+@section scripts{
+    <script src="~/Scripts/Views/PendentesAcervo/InputForm/chk_aptoTerceirizacao.js"></script>
+    <script src="~/Scripts/Views/PendentesAcervo/InputForm/chk_acervoConcluido.js"></script>
+    <script src="~/Scripts/Views/PendentesAcervo/InputForm/ddl_advogados.js"></script>
+
+}

@@ -1,0 +1,106 @@
+﻿@model SidcaMrv2.Models.PlanPortalCentroCusto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>PlanPortalCentroCusto</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nu_Grupo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nu_Grupo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.No_Grupo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.No_Grupo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CasoUsoGrupo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CasoUsoGrupo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Nu_Assunto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nu_Assunto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.No_Assunto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.No_Assunto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CasoUsoAssunto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CasoUsoAssunto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CCGeral)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CCGeral)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CCEspecial)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CCEspecial)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UnidSubsídio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UnidSubsídio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Area)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Area)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.cod }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,278 @@
+﻿@model SidcaMrv2.Models.PreCadastroUniverso
+@*@model PagedList.IPagedList < SidcaMrv2.Models.PreCadastroUniverso>
+@using PagedList.Mvc*@
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";//    @RenderBody()
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>PreCadastroUniverso</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Expediente)
+
+        <div class="form-group">
+            <div class="">
+                @Html.LabelFor(model => model.Expediente, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.Expediente, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Expediente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="">
+                @Html.LabelFor(model => model.Processo, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.Processo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Processo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.DtEntrada, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.DtEntrada, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.DtEntrada, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TpAcao, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-11">
+                @*@Html.EditorFor(model => model.TpAcao, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TpAcao, "", new { @class = "text-danger" })*@
+
+                <select id="DdlAcao" name="TpAcao" onchange="" class="form-control">
+                    <option value="">Selecione</option>
+                    @foreach (var tipo in ViewBag.tiposAcao)
+                    {
+                        if (tipo == Model.TpAcao)
+                        {
+                            <option value="@tipo" selected>@tipo</option>
+                        }
+                        else
+                        {
+                            <option value="@tipo">@tipo</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="">
+                @Html.LabelFor(model => model.NuVara, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.NuVara, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NuVara, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.NuForo, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-3">
+                    @*@Html.EditorFor(model => model.NuForo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.Validati onMessageFor(model => model.NuForo, "", new { @class = "text-danger" })*@
+                    <select id="DdlForo" name="NuForo" onchange="" class="form-control">
+                        <option value="">Selecione</option>
+                        @foreach (var foro in ViewBag.foros)
+                        {
+                            if (foro == Model.NuForo)
+                            {
+                                <option value="@foro" selected>@foro</option>
+                            }
+                            else
+                            {
+                                <option value="@foro">@foro</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.Comarca, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-3">
+                    @*@Html.EditorFor(model => model.Comarca, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Comarca, "", new { @class = "text-danger" })*@
+                    <select id="DdlComarca" name="Comarca" onchange="" class="form-control">
+                        <option value="">Selecione</option>
+                        @foreach (var comarca in ViewBag.comarcas)
+                        {
+                            if (comarca == Model.Comarca)
+                            {
+                                <option value="@comarca" selected>@comarca</option>
+                            }
+                            else
+                            {
+                                <option value="@comarca">@comarca</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="">
+                @Html.LabelFor(model => model.VlrCausa, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.VlrCausa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VlrCausa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.DtCausa, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.DtCausa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DtCausa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="">
+                @Html.LabelFor(model => model.AreaJud, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-5">
+                    @*@Html.EditorFor(model => model.AreaJud, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AreaJud, "", new { @class = "text-danger" })*@
+
+                    <select id="DdlArea" name="AreaJud" onchange="" class="form-control">
+                        <option value="">Selecione</option>
+                        @foreach (var area in ViewBag.areasJud)
+                        {
+                            if (area == Model.AreaJud)
+                            {
+                                <option value="@area" selected>@area</option>
+                            }
+                            else
+                            {
+                                <option value="@area">@area</option>
+                            }
+                        }
+                    </select>
+
+
+                </div>
+
+            </div>
+
+            <div class="">
+                @Html.LabelFor(model => model.GrupoAssunto, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-5">
+                    @*@Html.EditorFor(model => model.GrupoAssunto, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.GrupoAssunto, "", new { @class = "text-danger" })*@
+                    <select id="DdlGrpA" name="GrupoAssunto" onchange="" class="form-control">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CentroCusto, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-11">
+                @*@Html.EditorFor(model => model.CentroCusto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CentroCusto, "", new { @class = "text-danger" })*@
+                <select id="DdlCentroC" name="CentroCusto" onchange="" class="form-control">
+                    <option value="">Selecione</option>
+                    @foreach (var centroCusto in ViewBag.centrosCusto)
+                    {
+                        if (centroCusto == Model.CentroCusto)
+                        {
+                            <option value="@centroCusto" selected>@centroCusto</option>
+                        }
+                        else
+                        {
+                            <option value="@centroCusto">@centroCusto</option>
+                        }
+                    }
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnidSubsidio, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-11">
+                @*@Html.EditorFor(model => model.UnidSubsidio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UnidSubsidio, "", new { @class = "text-danger" })*@
+                <select id="DdlunSub" name="UnidSubsidio" onchange="pendente.DdlArea('@ViewBag.Expediente')" class="form-control">
+                    <option value="">Selecione</option>
+                    @foreach (var unidSubsidio in ViewBag.unidsSubsidio)
+                    {
+                        if (unidSubsidio == Model.UnidSubsidio)
+                        {
+                            <option value="@unidSubsidio" selected>@unidSubsidio</option>
+                        }
+                        else
+                        {
+                            <option value="@unidSubsidio">@unidSubsidio</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="jumbotron" id="centrocusto">
+            @{
+
+                Html.RenderPartial("~/Views/PendenteCadCadastramento/_ListCentroCusto.cshtml", (List<SidcaMrv2.Models.PlanPortalCentroCusto>)ViewBag.gridCentrosCusto);
+            }
+        </div>
+        <div class="form-group">
+            <div class="">
+                <div class="col-md-2">
+                    @*<input type="submit" value="Partes" class="btn btn-default"  style="width:100%;"/>*@
+                    <a href="/PendenteCadCPartes/Index" class="btn btn-default" style="width:100%;">Partes</a>
+                </div>
+            </div>
+            <div class="">
+                <div class="col-md-2">
+                    @*<input type="submit" value="Assuntos" class="btn btn-default" style="width:100%;" />*@
+                    <a href="/PendenteCadCAssuntos/Index" class="btn btn-default" style="width:100%;">Assuntos</a>
+                </div>
+            </div>
+            <div class="">
+                <div class="col-md-2">
+                    @*<input type="submit" value="Advogado Parte" class="btn btn-default"  style="width:100%;"/>*@
+                    <a href="/PendenteCadCAdvogado/Index" class="btn btn-default" style="width:100%;">Advogados</a>
+                </div>
+            </div>
+            <div class="">
+                <div class="col-md-2">
+                    @*<input type="submit" value="Contratos" class="btn btn-default"  style="width:100%;"/>*@
+                    <a href="/PendenteCadCContrato/Index" class="btn btn-default" style="width:100%;">Contrato</a>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="col-md-4">
+                    <input type="submit" value="Finalizar" class="btn btn-default" style="width:100%;" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+    @*<script src="~/Scripts/Views/PendenteCadCadastramento/ddl_acao.js"></script>
+        <script src="~/Scripts/Views/PendenteCadCadastramento/ddl_comarca.js"></script>
+        <script src="~/Scripts/Views/PendenteCadCadastramento/ddl_foro.js"></script>
+        <script src="~/Scripts/Views/PendenteCadCadastramento/ddl_area.js"></script>*@
+
+    <script src="~/Scripts/Views/PendenteCadCadastramento/novo.js"></script>
+}

@@ -1,0 +1,95 @@
+﻿@*@model IEnumerable<SidcaMrv2.Models.PreCadastroUniverso>*@
+@model PagedList.IPagedList<SidcaMrv2.Models.PreCadastroUniverso>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h3>Importação</h3>
+<br />
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+@*@model List<string>*@
+@using (Html.BeginForm("Create"
+        , "Importacao"
+        , FormMethod.Post
+        , new { enctype = "multipart/form-data" }
+    ))
+{
+    @*<label for="file">Upload Image: </label>*@
+
+    <div class="row">
+        <input class="col-md-9" type="file" name="file" id="file" />
+        <input class="col-md-3" type="submit" name="file" id="file" value="Upload arquivo" />
+    </div>
+    
+    <br />
+    <br />
+    @ViewBag.Message
+    <br />
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Expediente
+        </th>
+        <th>
+            Processo
+        </th>
+        <th>
+            DtEntrada
+        </th>
+        <th>
+            NuVara
+        </th>
+        <th>
+            NoParteJudicial
+        </th>
+        <th>
+            CondicaoParte)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Expediente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Processo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NuVara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoParteJudicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CondicaoParte)
+            </td>
+
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Expediente.Replace(".", "").Replace("/", "") }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Expediente.Replace(".", "").Replace("/", "") }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Expediente.Replace(".", "").Replace("/", "") })
+                </td>*@
+        </tr>
+    }
+
+</table>
+    Página @Model.PageNumber de @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))

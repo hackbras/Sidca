@@ -1,0 +1,101 @@
+﻿@model IEnumerable<SidcaMrv2.Models.vw_cadastro_finalizado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastro</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Expediente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Processo)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.NuAdvogado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaJud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrupoAssunto)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.DtEntrada)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.VlrCausa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DtCausa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NuVara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NuForo)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.DtFinalizado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Finalizado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Expediente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Processo)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.NuAdvogado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaJud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrupoAssunto)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.DtEntrada)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.VlrCausa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DtCausa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NuVara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NuForo)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.DtFinalizado)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Finalizado)*@
+            @Html.CheckBox("finalizado",false)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Expediente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Expediente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Expediente })
+        </td>*@
+    </tr>
+}
+
+</table>
